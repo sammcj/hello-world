@@ -15,6 +15,12 @@ make deps
 make build
 ```
 
+or
+
+```bash
+docker-compose build
+```
+
 ## Usage
 
 ### local
@@ -39,21 +45,21 @@ make build
 docker run \
   --detach \
   --name hello-world \
-  --publish 8000:8080 \
+  --publish 8080:8080 \
   ghcr.io/sammcj/hello-world
 ```
 
 curl the container
 
-`curl http://0.0.0.0:8000/`
+`curl http://0.0.0.0:8080/`
 
 curl the health check endpoint which returns an empty 200 response
 
-`curl http://0.0.0.0:8000/health`
+`curl http://0.0.0.0:8080/health`
 
 curl Prometheus metrics
 
-`curl http://0.0.0.0:8000/metrics`
+`curl http://0.0.0.0:8080/metrics`
 
 ## Acknowledgements
 
