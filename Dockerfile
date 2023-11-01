@@ -3,7 +3,6 @@
 FROM golang as builder
 ENV ARCH=${ARCH:-amd64}
 ENV GIN_MODE=${GIN_MODE:-release}
-ENV PORT=${PORT:-8080}
 
 # Create a "nobody" non-root user
 RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
@@ -11,9 +10,11 @@ RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
 # Install deps, test and build the binary
 RUN make ci
 
+# Runtime image
 FROM scratch
 ENV ARCH=${ARCH:-amd64}
 ENV GIN_MODE=${GIN_MODE:-release}
+ENV PORT=${PORT:-8080}
 
 LABEL maintainer "sammcj <sammcj@users.noreply.github.com>"
 LABEL \

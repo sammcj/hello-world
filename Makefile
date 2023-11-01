@@ -7,6 +7,7 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
+	@echo "  ci            make deps, test, build, info"
 	@echo "  deps          install dependencies"
 	@echo "  test          run tests"
 	@echo "  build         build binary"
@@ -16,7 +17,7 @@ help:
 	@echo "  serve         run binary"
 	@echo "  info          show binary info"
 
-ci: deps test build
+ci: deps test build info
 
 deps:
 	go get -u
@@ -42,4 +43,5 @@ serve:
 
 info:
 	file hello_world
-	sha1sum hello_world
+	# if sha1sum is available use it
+	which sha1sum && sha1sum hello_world || shasum hello_world
