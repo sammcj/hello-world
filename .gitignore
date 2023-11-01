@@ -1,0 +1,7 @@
+/hello_world
+/docker-hello-world
+/hello-world
+/docker_hello_world
+
+*.tmp
+*.tmp.*
