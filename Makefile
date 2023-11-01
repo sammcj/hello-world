@@ -24,11 +24,15 @@ deps:
 
 test:
 	@echo "Running tests..."
+	go test
+
+debug:
+	@echo "Running tests with debug..."
 	GIN_MODE=debug go test
 
 build:
 	@echo "Building binary..."
-	GIN_MODE=production CGO_ENABLED=0 go build -a -o $(BINARY)
+	CGO_ENABLED=0 go build -a -o $(BINARY)
 
 format:
 	@echo "Formatting code..."
