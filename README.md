@@ -40,7 +40,7 @@ docker run \
   --detach \
   --name hello-world \
   --publish 8000:8080 \
-  ghcr.io/infrastructure-as-code/hello-world
+  ghcr.io/sammcj/hello-world
 ```
 
 curl the container
