@@ -3,6 +3,7 @@
 FROM golang as builder
 ENV ARCH=${ARCH:-amd64}
 ENV GIN_MODE=${GIN_MODE:-release}
+ENV PORT=${PORT:-8080}
 
 # Create a "nobody" non-root user
 RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
@@ -24,7 +25,7 @@ LABEL \
 COPY --from=builder /etc_passwd /etc/passwd
 
 # Copy any certs from the builder stage
-COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --chown=nobody:nobody --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 # Copy the app binary from the builder stage
 COPY --chown=nobody:nobody --from=builder /hello_world /hello_world
