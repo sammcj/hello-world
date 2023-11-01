@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Which environment should be deployed?
+        required: true
+        type: environment
+        default: dev
+      tag:
+        description: "Leave this as latest unless you know what you're doing and have checked with the team."
+        required: true
+        default: latest
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: echo "I would deploy ${{ inputs.tag }} to ${{ inputs.environment }} now" >> "$GITHUB_STEP_SUMMARY"
