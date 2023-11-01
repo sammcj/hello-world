@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         TAG: latest
+        ARCH: amd64
     ports:
       - 8080:8080
     security_opt:
