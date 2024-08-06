@@ -1,6 +1,6 @@
 module github.com/sammcj/hello-world
 
-go 1.21.12
+go 1.21.13
 
 require (
 	github.com/gin-gonic/gin v1.9.1
